@@ -3,15 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/headlinesFragment2">
+    app:startDestination="@id/headlinesFragment">
     <fragment
-        android:id="@+id/headlinesFragment2"
+        android:id="@+id/headlinesFragment"
         android:name="com.example.topheadlinesapp.ui.headlines.HeadLinesFragment"
         android:label="fragment_headlines"
-        tools:layout="@layout/fragment_headlines" />
+        tools:layout="@layout/fragment_headlines" >
+        <action
+            android:id="@+id/action_headlinesFragment_to_headlineDetailsFragment"
+            app:destination="@id/headlineDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/headlineDetailsFragment"
         android:name="com.example.topheadlinesapp.ui.headline_details.HeadlineDetailsFragment"
         android:label="fragment_headline_details"
-        tools:layout="@layout/fragment_headline_details" />
+        tools:layout="@layout/fragment_headline_details" >
+
+        <argument
+            android:name="headLineItems"
+            app:argType="com.example.topheadlinesapp.data.model.local.HeadLinesItem"
+            app:nullable="true" />
+    </fragment>
 </navigation>
