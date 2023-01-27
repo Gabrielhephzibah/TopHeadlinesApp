@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs'
     id 'com.google.dagger.hilt.android'
+    id 'kotlin-parcelize'
 
 }
 
@@ -13,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.topheadlinesapp"
-        minSdk 24
+        minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -34,8 +35,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -64,5 +65,19 @@ dependencies {
     def fragment_navigation_version = "2.5.3"
     implementation("androidx.navigation:navigation-fragment-ktx:$fragment_navigation_version")
     implementation("androidx.navigation:navigation-ui-ktx:$fragment_navigation_version")
+
+    // Retrofit - Gson - Interceptor
+    def retrofit_version = "2.9.0"
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation 'com.squareup.retrofit2:retrofit-converters:2.6.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+    implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
+
+    //glide
+    def glide_version = "4.13.2"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
 }
 

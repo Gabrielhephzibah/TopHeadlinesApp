@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/bungee_shade</item>
         <item>@font/nunito_sans</item>
         <item>@font/nunito_sans_bold</item>
         <item>@font/tienne</item>
+        <item>@font/tienne_bold</item>
     </array>
 </resources>
