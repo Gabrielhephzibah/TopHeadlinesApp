@@ -75,6 +75,7 @@ class HeadLinesFragment : Fragment() {
     private fun retry(){
         binding.btnRetry.setOnClickListener{
             getTopHeadLines()
+            loading(binding.recyclerView, binding.progressBar, binding.error, binding.btnRetry)
         }
     }
     override fun onDestroyView() {

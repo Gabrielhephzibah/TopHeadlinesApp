@@ -114,7 +114,7 @@
                 android:linksClickable="true"
                 android:scrollbars="vertical"
                 android:text="@{viewModel.description}"
-                android:textColor="@color/text_color"
+                android:textColor="@color/dark_grey"
                 android:textColorLink="@color/purple_700"
                 android:textSize="@dimen/dimen_15sp"
                 app:layout_constrainedHeight="true"
