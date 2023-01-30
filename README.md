@@ -4,7 +4,7 @@
 * Built with Kotlin 
 
 # Architecture
-The application was built on MVVM (Model, View, View-Model) architecture and the UI followed the single activity and multiple fragment pattern
+The application was built on MVVM (Model, View, View-Model) architecture and followed the single activity and multiple fragment pattern
 
 
 # Major Dependencies
@@ -20,9 +20,9 @@ The application was built on MVVM (Model, View, View-Model) architecture and the
 
 The app has the following structure
 * data: This package contains the model, remote and the repository
-* di: This package contains files responsible for dependencies injection
+* di: This package contains classes responsible for dependencies injection
 * ui: This package is responsible for the UI/View logic and implementation
-* utils: This package is responsible for files that are used across the application
+* utils: This package is responsible for classes that are used across the application
 * Gradle Scripts
     * These scripts are responsible for dependencies and plugins necessary for the project
 
