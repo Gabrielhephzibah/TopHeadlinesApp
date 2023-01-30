@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.example.topheadlinesapp.data.model.local.HeadLinesItem
 import com.example.topheadlinesapp.databinding.HeadlinesItemsBinding
 
-class HeadLinesAdapter (private val onItemClick: (HeadLinesItem?) -> Unit) :
+class HeadLinesAdapter(private val onItemClick: (HeadLinesItem?) -> Unit) :
     ListAdapter<HeadLinesItem, HeadLinesViewHolder>(HeadLinesComparator) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeadLinesViewHolder {
@@ -21,12 +21,9 @@ class HeadLinesAdapter (private val onItemClick: (HeadLinesItem?) -> Unit) :
             onItemClick(getItem(it))
         }
     }
-
     override fun onBindViewHolder(holder: HeadLinesViewHolder, position: Int) {
         getItem(position)?.let { item -> holder.bind(item) }
     }
-
-
     object HeadLinesComparator : DiffUtil.ItemCallback<HeadLinesItem>() {
         override fun areItemsTheSame(
             oldItem: HeadLinesItem,
@@ -34,7 +31,6 @@ class HeadLinesAdapter (private val onItemClick: (HeadLinesItem?) -> Unit) :
         ): Boolean {
             return oldItem.publishedAt == newItem.publishedAt
         }
-
         override fun areContentsTheSame(
             oldItem: HeadLinesItem,
             newItem: HeadLinesItem
@@ -42,7 +38,6 @@ class HeadLinesAdapter (private val onItemClick: (HeadLinesItem?) -> Unit) :
             return oldItem == newItem
         }
     }
-
 
 
 }

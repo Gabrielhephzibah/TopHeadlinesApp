@@ -4,7 +4,7 @@ import com.example.topheadlinesapp.data.model.remote.TopHeadlineResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface TopHeadlineService {
+interface TopHeadlineAPI {
     @GET("top-headlines")
     suspend fun getTopHeadlines(
         @Query("sources") sources: String,

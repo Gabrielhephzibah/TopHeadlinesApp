@@ -2,7 +2,7 @@ package com.example.topheadlinesapp.di
 
 import android.content.Context
 import com.example.topheadlinesapp.BuildConfig
-import com.example.topheadlinesapp.data.remote.TopHeadlineService
+import com.example.topheadlinesapp.data.remote.TopHeadlineAPI
 import com.example.topheadlinesapp.utils.AppConstant.REQUEST_TIMEOUT_DURATION
 import com.example.topheadlinesapp.utils.NetworkConnectionInterceptor
 import dagger.Module
@@ -39,7 +39,6 @@ object AppModule {
             .build()
 
     }
-
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
@@ -49,12 +48,10 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
-
     @Provides
     @Singleton
-    fun provideTopHeadlineService(retrofit: Retrofit): TopHeadlineService =
-        retrofit.create(TopHeadlineService::class.java)
-
+    fun provideTopHeadlineAPI(retrofit: Retrofit): TopHeadlineAPI =
+        retrofit.create(TopHeadlineAPI::class.java)
     @Provides
     fun providesIODispatcher(): CoroutineDispatcher = Dispatchers.IO
 

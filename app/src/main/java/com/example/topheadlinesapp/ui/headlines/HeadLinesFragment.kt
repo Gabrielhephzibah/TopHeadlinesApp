@@ -25,7 +25,6 @@ class HeadLinesFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,14 +32,12 @@ class HeadLinesFragment : Fragment() {
         _binding = FragmentHeadlinesBinding.inflate(inflater, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpAdapter()
         getTopHeadLines()
         retry()
     }
-    
     private fun getTopHeadLines() {
         viewLifecycleOwner.collect(
             flow = viewModel.getTopHeadlines(),
@@ -63,7 +60,6 @@ class HeadLinesFragment : Fragment() {
         val item = response.data?.articles?.map { headline ->
             HeadLinesItem(
                 headline.title,
-                headline.publishedAt,
                 headline.description,
                 headline.content,
                 headline.urlToImage,
@@ -82,6 +78,4 @@ class HeadLinesFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }

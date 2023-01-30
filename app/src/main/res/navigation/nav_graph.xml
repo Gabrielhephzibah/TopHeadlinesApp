@@ -11,7 +11,8 @@
         tools:layout="@layout/fragment_headlines" >
         <action
             android:id="@+id/action_headlinesFragment_to_headlineDetailsFragment"
-            app:destination="@id/headlineDetailsFragment" />
+            app:destination="@id/headlineDetailsFragment"
+           />
     </fragment>
     <fragment
         android:id="@+id/headlineDetailsFragment"
@@ -33,6 +34,7 @@
             android:id="@+id/action_biometricFragment_to_headlinesFragment"
             app:destination="@id/headlinesFragment"
             app:popUpTo="@id/biometricFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true"
+            />
     </fragment>
 </navigation>
