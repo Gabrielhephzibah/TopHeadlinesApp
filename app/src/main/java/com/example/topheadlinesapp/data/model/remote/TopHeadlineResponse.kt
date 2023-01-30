@@ -11,7 +11,6 @@ data class TopHeadlineResponse(
     @SerializedName("totalResults")
     val totalResults: Int?
 )
-
 data class Source(
     @SerializedName("id")
     val id: String?,

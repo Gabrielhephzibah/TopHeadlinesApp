@@ -16,6 +16,5 @@
     <dimen name="dimen_15sp">15sp</dimen>
     <dimen name="dimen_15">15dp</dimen>
     <dimen name="dimen_12sp">12sp</dimen>
-    <dimen name="dimen_2">2dp</dimen>
     <dimen name="dimen_18">18dp</dimen>
 </resources>

@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.topheadlinesapp.databinding.FragmentHeadlineDetailsBinding
+import com.example.topheadlinesapp.di.GlideApp
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,21 +33,24 @@ class HeadlineDetailsFragment : Fragment() {
         getHeadLineDetails()
         onBackClick()
     }
-    private fun getHeadLineDetails(){
+    private fun getHeadLineDetails() {
         val details = args.headLineItems
         binding.title.text = details?.title
         binding.description.text = details?.description
         binding.content.text = details?.content
-        Glide.with(binding.root)
+        GlideApp.with(binding.root)
             .load(details?.imageUrl)
             .diskCacheStrategy(DiskCacheStrategy.DATA)
             .into(binding.image)
     }
-
     private fun onBackClick() {
         binding.onBackClick.setOnClickListener {
             Navigation.findNavController(it).popBackStack()
         }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

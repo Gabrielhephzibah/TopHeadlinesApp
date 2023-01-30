@@ -15,14 +15,11 @@ object BiometricUtils {
         val biometricManager = BiometricManager.from(context)
         return biometricManager.canAuthenticate(BIOMETRIC_STRONG or BIOMETRIC_WEAK)
     }
-
     fun isBiometricReady(context: Context) =
         isBiometricConfigured(context) == BiometricManager.BIOMETRIC_SUCCESS
-
     private fun setBiometricPromptInfo(
         title: String,
         subtitle: String,
-        allowAuthenticator: Boolean
     ): BiometricPrompt.PromptInfo {
         val builder = BiometricPrompt.PromptInfo.Builder().apply {
             setTitle(title)
@@ -34,7 +31,6 @@ object BiometricUtils {
 
         return builder.build()
     }
-
     private fun initializeBiometricPrompt(
         activity: Fragment,
         listener: BiometricAuthListener
@@ -47,7 +43,6 @@ object BiometricUtils {
             override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
                 super.onAuthenticationError(errorCode, errString)
                 listener.onBiometricAuthenticationError(errorCode, errString.toString())
-                println("ERROR:::: $errorCode, $errString")
             }
 
             override fun onAuthenticationFailed() {
@@ -57,30 +52,26 @@ object BiometricUtils {
                     "Authentication failed for an unknown reason"
                 )
                 Log.w(this.javaClass.simpleName, "Authentication failed for an unknown reason")
-                println("FAILED:::: #HERE IS FAILED")
+
             }
 
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                 super.onAuthenticationSucceeded(result)
                 listener.onBiometricAuthenticationSuccess(result)
-                println("SUCCESS:::: $result")
             }
         }
         return BiometricPrompt(activity, executor, callback)
     }
-
     fun showBiometricPrompt(
         title: String = "Verify your identity",
         subtitle: String = "Use your fingerprint to verify your identity.",
         activity: Fragment,
         listener: BiometricAuthListener,
         cryptoObject: BiometricPrompt.CryptoObject? = null,
-        allowAuthenticator : Boolean = false
     ) {
         val promptInfo = setBiometricPromptInfo(
             title,
             subtitle,
-            allowAuthenticator
         )
 
         val biometricPrompt = initializeBiometricPrompt(activity, listener)
@@ -91,12 +82,6 @@ object BiometricUtils {
         }
     }
 
-    fun cancelAuthentication(
-        activity: Fragment,
-        listener: BiometricAuthListener
-    ){
-        val biometricPrompt = initializeBiometricPrompt(activity, listener)
-        biometricPrompt.cancelAuthentication()
-    }
+
 
 }

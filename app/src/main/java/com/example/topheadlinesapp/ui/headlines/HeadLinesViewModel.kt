@@ -7,7 +7,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HeadLinesViewModel @Inject constructor(private val repository: TopHeadlineRepository) : ViewModel(){
-
- fun getTopHeadlines() = repository.getTopHeadlines()
+   fun getTopHeadlines() = repository.getTopHeadlines()
 
 }
