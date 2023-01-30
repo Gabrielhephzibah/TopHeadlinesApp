@@ -12,6 +12,9 @@ import com.example.topheadlinesapp.data.model.remote.TopHeadlineResponse
 import com.example.topheadlinesapp.databinding.FragmentHeadlinesBinding
 import com.example.topheadlinesapp.utils.Resource
 import com.example.topheadlinesapp.utils.extensions.*
+import com.example.topheadlinesapp.utils.loading
+import com.example.topheadlinesapp.utils.success
+import com.example.topheadlinesapp.utils.error
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -54,7 +57,7 @@ class HeadLinesFragment : Fragment() {
     }
     private fun setTopHeadLines(response: Resource<TopHeadlineResponse?>) {
         if (response is Resource.Error)
-            error(binding.recyclerView, binding.progressBar, binding.error,binding.btnRetry)
+            error(binding.recyclerView, binding.progressBar, binding.error, binding.btnRetry)
         else
             success(binding.recyclerView, binding.progressBar, binding.error, binding.btnRetry)
         val item = response.data?.articles?.map { headline ->
